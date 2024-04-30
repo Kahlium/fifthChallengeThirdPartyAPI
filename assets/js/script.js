@@ -3,6 +3,8 @@
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
+
+
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
 
@@ -21,7 +23,26 @@ function renderTaskList() {
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){
-
+    event.preventDefault();
+    
+    let currentTasks = JSON.parse(localStorage.getItem('tasks') || "[]");
+    const newTask = 
+    {
+        taskTitle: "",
+        taskDate: "",
+        taskDescription:"",
+        status: 'to-do'
+    };
+    
+    if (taskTitle.value === "" || taskDate.value === "" || taskDescription.value === "")
+    {
+        return;
+    } else
+    {
+        currentTasks.push(newTask);
+        localStorage.setItem("tasks", JSON.stringify(currentTasks));
+        console.log(currentTasks.value)
+    }
 }
 
 // Todo: create a function to handle deleting a task
