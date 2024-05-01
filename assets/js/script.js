@@ -28,7 +28,25 @@ function generateTaskId() {
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
+    const todoCards = document.getElementById("todo-cards")
+    const taskCard = document.createElement("div");
+    const cardBody = document.createElement("div");
+    const cardTitle = document.createElement("h5");
+    const cardText = document.createElement("p");
+    const cardButton = document.createElement("button");
+  
+    taskCard.setAttribute("class", "card");
+    cardBody.setAttribute("class", "card-body");
+    cardTitle.setAttribute("class", "card-title")
+    cardTitle.innerText = task.taskName;
+    cardText.setAttribute("class", "card-text");
+    cardText.innerText = task.taskDescription;
+    cardButton.setAttribute("class", "btn btn-primary");
+    cardButton.innerText = "Delete";
 
+    taskCard.append(cardBody)
+    cardBody.append(cardTitle, cardText, cardButton)
+    todoCards.append(taskCard)
 }
 
 // Todo: create a function to render the task list and make cards draggable
@@ -59,6 +77,7 @@ function handleAddTask(event){
         currentTasks.push(newTask);
         localStorage.setItem("tasks", JSON.stringify(currentTasks));
         console.log(newTask)
+        createTaskCard(newTask);
     }
 }
 
