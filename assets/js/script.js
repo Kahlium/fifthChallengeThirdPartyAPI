@@ -28,7 +28,6 @@ function generateTaskId() {
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
-    const todoCards = document.getElementById("todo-cards")
     const taskCard = document.createElement("div");
     const cardBody = document.createElement("div");
     const cardTitle = document.createElement("h5");
@@ -46,11 +45,24 @@ function createTaskCard(task) {
 
     taskCard.append(cardBody)
     cardBody.append(cardTitle, cardText, cardButton)
-    todoCards.append(taskCard)
+
+    //Make cards draggable
+    //Once dragged to another status row, update status on the task.status
+
+    return taskCard
 }
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
+    const todoCards = document.getElementById("todo-cards");
+
+    for (let task of taskList)
+    {
+        //Add an if for every status: todo, in progress and done
+        const taskCard = createTaskCard(task)
+        todoCards.append(taskCard)
+    }
+
     console.log('renderTaskList')
 
 }
