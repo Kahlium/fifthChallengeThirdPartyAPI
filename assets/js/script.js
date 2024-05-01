@@ -13,7 +13,17 @@ const submitButton = document.getElementById('submitButton')
 //Functions
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
-
+    if (nextId === null)
+    {
+        nextId = 1;
+        localStorage.setItem("nextId", JSON.stringify(nextId))
+    } else
+    {
+        nextId++;
+        localStorage.setItem("nextId", JSON.stringify(nextId))
+    }
+    console.log(nextId)
+    return nextId;
 }
 
 // Todo: create a function to create a task card
